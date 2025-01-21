@@ -4,11 +4,14 @@ import sqlite3
 from datetime import date
 from flask import Flask, jsonify,request,render_template
 import psycopg2
+from Intelligent_LLM.initialize_llm import GPTConversationSystem
+
 
 
 #### Defining Flask App
 app = Flask(__name__, template_folder='.')
 
+Conversation = GPTConversationSystem()
 
 ###### sqlite 3 code #######
 
@@ -653,9 +656,9 @@ def makepatientupdates():
 def chat():
     data = request.get_json()
     message = data.get('message', '')
-    
+    response = Conversation.get_gpt_response(message)
     # For now, simply return "hi" as requested
-    return jsonify({'response': 'hi'})
+    return jsonify({'response': response})
 
 
 #### Our main function which runs the Flask App

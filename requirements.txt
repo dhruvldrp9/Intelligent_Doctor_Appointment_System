@@ -1,0 +1,3 @@
+openai==1.59.9
+flask==3.1.0
+psycopg2-binary==2.9.10
