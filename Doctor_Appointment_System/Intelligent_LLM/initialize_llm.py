@@ -110,6 +110,3 @@ class GPTConversationSystem:
             return "I apologize, but I encountered an error. Could you please repeat that?"
         
 
-
-conver = GPTConversationSystem()
-print(conver.get_gpt_response("Hello, How are you?"))
