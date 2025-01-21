@@ -1,0 +1,45 @@
+c.execute('''CREATE TABLE IF NOT EXISTS doctors (
+    first_name TEXT,
+    last_name TEXT,
+    dob DATE,
+    phone_number BIGINT,
+    address TEXT,
+    doc_id TEXT,
+    password TEXT,
+    speciality TEXT,
+    status INTEGER
+)''')
+
+c.execute('''CREATE TABLE IF NOT EXISTS patients (
+    first_name TEXT,
+    last_name TEXT,
+    dob DATE,
+    phone_number BIGINT,
+    password TEXT,
+    address TEXT,
+    status INTEGER
+)''')
+
+c.execute('''CREATE TABLE IF NOT EXISTS superusercreds (
+    username TEXT,
+    password TEXT
+)''')
+
+
+c.execute('''
+CREATE TABLE IF NOT EXISTS doctorappointments (
+    docid TEXT,
+    patientname TEXT,
+    patientnum BIGINT,
+    appointmentdate DATE
+)''')
+
+
+c.execute('SELECT * from superusercreds')
+conn.commit()
+adminuser = c.fetchall()
+if not adminuser:
+    c.execute("INSERT INTO superusercreds VALUES ('admin','admin')")
+    conn.commit()
+
+execute the above queries in the postgres
